@@ -1,15 +1,37 @@
 import React from 'react';
+import { Router, Route, hashHistory, Redirect } from 'react-router';
 import Home from './routes/Home';
+import NewsDetails from './routes/Home/newsDetail.js';
 
-class App extends React.Component {
+class RouteConfig extends React.Component {
 
     render() {
-        return(
-            <div>
-                <Home></Home>
-            </div>
+        return(  
+            <Router history={hashHistory}>
+
+                <Route>
+                    <Route>
+                        <Route path="/" component={Home}/>
+                    </Route>
+                    <Route>
+                       <Route path="/details/:uniquekey" component={NewsDetails}/>
+                    </Route>
+                </Route>    
+            </Router>    
+          
         )
     }
 }
+const RouteDiv = () => {
 
-export default App
+    return (
+  
+      <div>
+        <RouteConfig></RouteConfig>
+      </div>
+  
+    )
+  
+  }
+  
+  export default RouteDiv
